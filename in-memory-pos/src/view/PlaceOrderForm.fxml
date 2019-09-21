@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="1128.0" style="-fx-background-color: #BBD9CA;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlaceOrderFormController">
+   <children>
+      <ImageView id="imgHome" fitHeight="98.0" fitWidth="91.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/home-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <JFXButton id="btnAddNewOrder" layoutX="195.0" layoutY="93.0" onAction="#btnAddNew_OnAction" prefHeight="35.0" prefWidth="214.0" style="-fx-background-color: navy blue;" text=" New Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="622.0" layoutY="165.0" prefHeight="31.0" prefWidth="426.0" promptText="Customer Name :" style="-fx-font-weight: bold;" />
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="622.0" layoutY="239.0" prefHeight="31.0" prefWidth="426.0" promptText="Item Description :" style="-fx-font-weight: bold;" />
+      <JFXTextField fx:id="txtQtyOnHand" labelFloat="true" layoutX="622.0" layoutY="302.0" prefHeight="31.0" prefWidth="426.0" promptText="Qty. on Hand :" style="-fx-font-weight: bold;" />
+      <JFXButton id="btnSave" fx:id="btnSave" layoutX="742.0" layoutY="371.0" onAction="#btnAdd_OnAction" prefHeight="42.0" prefWidth="204.0" style="-fx-background-color: darkred;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></JFXButton>
+      <TableView id="tbl" fx:id="tblOrderDetails" layoutX="22.0" layoutY="454.0" prefHeight="232.0" prefWidth="1074.0">
+        <columns>
+          <TableColumn prefWidth="160.0" styleClass="textal" text="Code" />
+          <TableColumn prefWidth="335.0" styleClass="textal" text="Description" />
+            <TableColumn prefWidth="116.0" styleClass="textal" text="Qty" />
+            <TableColumn prefWidth="165.0" styleClass="textal" text="Unit Price" />
+            <TableColumn prefWidth="149.0" styleClass="textal" text="Total" />
+            <TableColumn prefWidth="140.0" styleClass="textal" text="Delete" />
+        </columns>
+         <stylesheets>
+            <URL value="@style/managecustomerform.css" />
+            <URL value="@style/manageitemform.css" />
+         </stylesheets>
+      </TableView>
+      <JFXTextField fx:id="txtUnitPrice" labelFloat="true" layoutX="196.0" layoutY="302.0" prefHeight="31.0" prefWidth="374.0" promptText="Unit Price :" style="-fx-font-weight: bold;" />
+      <JFXComboBox fx:id="cmbCustomerId" labelFloat="true" layoutX="200.0" layoutY="165.0" onAction="#combocusId" prefHeight="31.0" prefWidth="367.0" promptText="Customer ID :" style="-fx-font-weight: bold;" />
+      <JFXComboBox fx:id="cmbItemCode" labelFloat="true" layoutX="195.0" layoutY="233.0" onAction="#comboItemId" prefHeight="31.0" prefWidth="374.0" promptText="Item Code :" style="-fx-font-weight: bold;" />
+<!--      <JFXTextField fx:id="txtQty" onKeyPressed="#txtQty_OnKeyPressed" labelFloat="true" layoutX="370.0" layoutY="226.0" prefHeight="28.0" prefWidth="161.0" promptText="Qty." />-->
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="196.0" layoutY="376.0" onAction="#txtQty_OnAction" prefHeight="31.0" prefWidth="374.0" promptText="Qty :" style="-fx-font-weight: bold;" />
+      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="903.0" layoutY="44.0" prefHeight="24.0" prefWidth="152.0" style="-fx-font-weight: bold;" text="ORDER ID : OD001">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" alignment="CENTER_RIGHT" layoutX="903.0" layoutY="80.0" prefHeight="24.0" prefWidth="152.0" style="-fx-font-weight: bold;" text="2019-05-01">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="24.0" layoutY="703.0" text="TOTAL : 0.00">
+         <font>
+            <Font name="Times New Roman Bold" size="32.0" />
+         </font>
+      </Label>
+      <JFXButton id="play" fx:id="btnPlaceOrder" layoutX="898.0" layoutY="696.0" onAction="#btnPlaceOrder_OnAction" prefHeight="47.0" prefWidth="161.0" style="-fx-background-color: #CA9C0D;" text="PlaceOrder" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></JFXButton>
+      <ImageView fx:id="cus" fitHeight="92.0" fitWidth="92.0" layoutX="22.0" layoutY="126.0" onMouseClicked="#navigate" onMouseEntered="#enter" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/manageMembers.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="place" fitHeight="85.0" fitWidth="101.0" layoutX="25.0" layoutY="239.0" onMouseClicked="#navigate" onMouseEntered="#enter" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/store.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="issue" fitHeight="104.0" fitWidth="112.0" layoutX="26.0" layoutY="355.0" onMouseClicked="#navigate" onMouseEntered="#enter" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/serch.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="457.0" layoutY="30.0" prefHeight="53.0" prefWidth="214.0" text="Placeorder">
+         <font>
+            <Font name="Lucida Bright Demibold" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="balence" layoutX="622.0" layoutY="707.0" text="Balance : 0.00">
+         <font>
+            <Font name="Lucida Bright Demibold" size="27.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="cash" layoutX="302.0" layoutY="698.0" onAction="#cashOnAction" prefHeight="26.0" prefWidth="234.0" promptText="Cash :  ↵" style="-fx-font-weight: bold; -fx-font-size: 20px; -fx-font-family: arial;" />
+   </children>
+   <stylesheets>
+      <URL value="@style/manageitemform.css" />
+      <URL value="@style/style.css" />
+   </stylesheets>
+</AnchorPane>

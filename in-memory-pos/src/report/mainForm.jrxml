@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cus" pageWidth="425" pageHeight="542" columnWidth="385" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="bb8385a3-7db6-45f1-a7bb-b63157c9fd62">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Dep4"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="468"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Cash" class="java.lang.String"/>
+	<parameter name="change" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT pos.orderdetail.`ItemCodeF`,
+	pos.item.description,
+	pos.orderdetail.qty,
+	pos.orderdetail.`unitePrice`,
+	pos.orderdetail.`qty` * pos.orderdetail.`unitePrice` AS `total`,
+	pos.customer.`Name`,
+	pos.orderx.`Orderxid`,
+	pos.orderx.cusid,
+	pos.orderx.Orderdate
+    -- SUM (orderdetail.qty * orderdetail.unitePrice) AS Total
+FROM pos.orderdetail
+	INNER JOIN pos.item ON 
+	 pos.orderdetail.`ItemCodeF` = pos.item.code 
+	INNER JOIN pos.orderx ON 
+	 pos.orderdetail.oderid = pos.orderx.`Orderxid` 
+	INNER JOIN pos.customer ON 
+	 pos.orderx.cusid = pos.customer.`ID` 
+	 
+WHERE 
+	 pos.orderdetail.oderid LIKE CONCAT (  $P{id}  ,'%') 
+	 
+	 -- GROUP BY  orderx.id]]>
+	</queryString>
+	<field name="ItemCodeF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ItemCodeF"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orderdetail"/>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orderdetail"/>
+	</field>
+	<field name="unitePrice" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="unitePrice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orderdetail"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer"/>
+	</field>
+	<field name="Orderxid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Orderxid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orderx"/>
+	</field>
+	<field name="cusid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cusid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orderx"/>
+	</field>
+	<field name="Orderdate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="Orderdate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orderx"/>
+	</field>
+	<variable name="total1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="403" height="90" forecolor="#0C3557" uuid="9caab217-4b4f-402b-9b59-73ec1bab6fdc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Palatino Linotype" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ **************************************** RECEIPT
+  ****************************************   ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="80" width="100" height="22" uuid="ea1853bc-ad15-4bfe-9750-f06936f2a4d6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Orderdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="102" width="110" height="20" uuid="b814c3bc-fba6-47e7-8bbc-01189adb4b4a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Orderxid}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="102" width="80" height="21" forecolor="#0C3557" uuid="8d754101-5b58-44a8-8102-3bf0171fb2bc"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[OrderId]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41">
+			<staticText>
+				<reportElement x="20" y="0" width="80" height="21" forecolor="#0C3557" uuid="fa43afc1-f265-4206-8856-9711e59e3044"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="13"/>
+				</textElement>
+				<text><![CDATA[cusId]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="60" height="20" forecolor="#0C3557" uuid="e759b5ce-82b6-4d97-b7dc-f19b192e89cc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="13"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="0" width="70" height="20" uuid="fc2dafa2-d3fd-4e5c-aedb-1502aa125621"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="100" height="20" uuid="f395831d-dece-4242-9d8b-05a15d2682fc"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cusid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34">
+			<subreport>
+				<reportElement x="26" y="9" width="350" height="25" uuid="b10d147c-e295-44c7-9384-1d0f7839d883"/>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$P{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\Users\\User\\JaspersoftWorkspace\\DEP_4\\SUB6.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="186">
+			<textField>
+				<reportElement x="270" y="30" width="110" height="19" forecolor="#730F0E" uuid="78d1407e-dbbe-41a7-a5e9-b58bdc63d990"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="30" width="110" height="21" forecolor="#6E2A2E" uuid="def5ad0d-0ec2-44d8-b83e-7a2152706bd0"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="69" width="60" height="20" uuid="cdd4faf6-6203-44b0-b3a1-17ef18059318"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Cash}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="51" width="50" height="19" forecolor="#0C3557" uuid="3caf9529-1991-4ad5-a674-cca2f4c4473a"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[Cash]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="70" width="50" height="19" forecolor="#0C3557" uuid="04719bb1-8d9b-488d-afe1-e8428859df9c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[Change]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="50" width="50" height="21" uuid="2cbc0779-e8a9-46bc-9dd6-138925b18bbc"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{change}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="1" width="354" height="19" forecolor="#0C3557" uuid="3af5c3c6-93bc-4c00-bbfa-c98f242c8352"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[===================================================  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="110" width="348" height="30" forecolor="#0C3557" uuid="be4aab51-124d-4f40-96af-7e278638ed72"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="15"/>
+				</textElement>
+				<text><![CDATA[--------------------THANK YOU--------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="89" width="354" height="19" forecolor="#0C3557" uuid="29e3f560-5847-4a3b-976c-98f94482a613"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[===================================================  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-17" y="130" width="422" height="19" forecolor="#0C3557" uuid="484684ac-761e-4fa7-a805-673380872a25"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[===========================================================  ]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="165" y="150" width="70" height="30" uuid="45ead57e-f7ad-4cb9-ab3f-a5d9141f2560"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="NW7" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

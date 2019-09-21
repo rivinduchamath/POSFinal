@@ -1,0 +1,198 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: red;
+}
+
+#imgHome:hover{
+    -fx-effect: dropshadow(gaussian,#6495ED,20,0.0,0,0);
+}
+
+#btnAddNewCustomer{
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
+#play{
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+#btnSave{
+    -fx-background-color: #218838;
+    -fx-text-fill: white;
+}
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: red;
+}
+
+#imgHome:hover{
+    -fx-effect: dropshadow(gaussian,#6495ED,20,0.0,0,0);
+}
+.ho:hover{
+    -fx-background-color: #A0C1B2;
+}
+#btnAddNewCustomer{
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
+#ho3{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+#ho2{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+#btnSave:hover{
+    -fx-background-color: #040AA9;
+}
+
+#btnDelete:hover{
+    -fx-background-color: #a90637;
+}
+#ho1{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+#btnSave{
+    -fx-background-color: #218838;
+    -fx-text-fill: white;
+}
+
+#btnDelete{
+    -fx-background-color: #ffc107;
+}
+
+.table-row-cell:selected{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #007bff 50%, white 100%);
+}
+
+.table-row-cell:selected .table-cell{
+    -fx-text-fill: black !important;
+}
+
+.coldesc {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.colUtPrice{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+#DateSelecter{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.colqtyonhand{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.colId{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.colqty{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-text-fill: black;
+    -fx-border-width: 0, 0;
+    -fx-font-size: 16px;
+    -fx-background-color:linear-gradient(#94e081, #94e081,#94e081 );
+
+}
+#tblPlaceOrders. {
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%,#BBD9CA 50%, white 100%);
+}
+#alltabl{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #BBD9CA 50%, white 100%);
+    -fx-alignment: center;
+}
+.ho{
+
+}
+#tbl{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #BBD9CA 50%, white 100%);
+    -fx-alignment: center;
+}
+.table-row-cell{
+    -fx-alignment: center;
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%,#BBD9CA 50%, white 100%);
+}
+.textal{
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+.coltot{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.table-row-cell:selected{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #e7c401 50%, white 100%);
+}
+.table-row-cell:selected .table-cell{
+    -fx-text-fill: black !important;
+    -fx-alignment: center;
+}
+#comboBox .list-cell:selected {
+    -fx-background-color: #aee0c7;
+}
+#comboBox{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+#comboBox .list-cell
+{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-text-fill:black;
+    -fx-background-color: #aee0c7 ;
+}
+#comboBox .list-cell:hover{
+    -fx-background-color:#90b5a2 ;
+}
+
+.alltable {
+}
+
+.bt1 {
+    -fx-cursor: hand;
+}
+.placeOrder{
+
+    -fx-background-color: #4f67a6;
+}
+.Remove{
+    -fx-background-color: #a41d23;
+}
+.IQON:hover{
+    -fx-background-color:#90b5a2;
+}
+#btnDelete{
+    -fx-background-color: #ffc107;
+}
+
+.table-row-cell:selected{
+    -fx-background-color:linear-gradient(from 0% 0% to 100% 100%, white 0%, #007bff 50%, white 100%);
+}
+
+.table-row-cell:selected .table-cell{
+    -fx-text-fill: black !important;
+}
+.mainformanchor{
+    -fx-background-color:  linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .7));;
+}
